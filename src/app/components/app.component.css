@@ -1,0 +1,33 @@
+md-sidenav-container {
+  height: 100vh;
+}
+
+md-sidenav {
+  width: 300px;
+}
+
+md-raised-button {
+  margin: 16px;
+}
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+[md-grid-list] {
+  margin: 16px;
+}
+
+[md-raised-button] {
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  margin-top: 10px;
+}
+
+p {
+  margin: 16px;
+}
+@media only screen and (min-width: 600px) {
+    
+}

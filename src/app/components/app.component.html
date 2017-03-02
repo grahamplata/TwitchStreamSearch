@@ -1,0 +1,41 @@
+<div>
+  <md-toolbar color="primary">
+    <md-icon>person</md-icon>
+    Twitch Stream Finder
+    <span class="menu-spacer"></span>
+    <button md-button (click)="sidenav.open()" color="accent"><md-icon>menu</md-icon></button>
+  </md-toolbar>
+  <md-sidenav-container class="example-container">
+    <md-sidenav #sidenav class="example-sidenav" align="end">
+      <img src="{{selectedResult.logo}}">
+      <div class="well">
+        <p>Name: {{selectedResult.display_name}}</p>
+        <p>Playing: {{selectedResult.game}}</p>
+        <p>Status: {{selectedResult.status}}</p>
+        <p>Language: {{selectedResult.language}}</p>
+        <p>Channel views: {{selectedResult.views}}</p>
+        <p>Followers: {{selectedResult.followers}}</p>
+        <p>Partnered with Twitch: {{selectedResult.partner}}</p>
+      </div>
+      <button md-raised-button (click)="gotoStream(selectedResult.url)" color="primary">Go to Stream</button>
+      <button md-raised-button (click)="sidenav.close()" color="accent">Close</button>
+    </md-sidenav>
+    <div class="example-sidenav-content">
+      <app-search (loading)="loading = $event" (results)="updateResults($event)"></app-search>
+      <div class="container">
+        <md-grid-list cols="6">
+          <md-grid-tile *ngFor="let result of results">
+            <app-result-card [result]="result"></app-result-card>
+            <md-grid-tile-footer>
+              <h3 md-line>{{result.display_name}}</h3>
+              <span md-line>{{result.game}}</span>
+              <button md-icon-button (click)="showDetails(result)">
+                <md-icon>info</md-icon>
+              </button>
+            </md-grid-tile-footer>
+          </md-grid-tile>
+        </md-grid-list>
+      </div>
+    </div>
+  </md-sidenav-container>
+</div>
